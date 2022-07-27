@@ -30,7 +30,6 @@ public class EnviaEmail {
     public void enviar() throws JsonProcessingException{
 
         List<NotaFiscal> notasFiscais = notaFiscalRepository.findTop3ByStatusOrderByCriadoEmAsc(StatusNota.GERADA);
-        System.out.println("Entrando no metodo de enviar email.....");
 
         notasFiscais.forEach(n -> {
 
@@ -45,7 +44,6 @@ public class EnviaEmail {
 
             try {
                 String emailPayload = mapper.writeValueAsString(emailNotaFiscalResponse);
-                System.out.println("Conteudo do Email: " + emailPayload);
                 emailService.sendEmail(n.getEmail(),emailPayload);
                 n.mudarStatus(StatusNota.GERADA_E_ENVIADA);
             } catch (JsonProcessingException e) {
@@ -53,8 +51,6 @@ public class EnviaEmail {
             }
 
         });
-
-
 
     }
 
