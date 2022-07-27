@@ -22,7 +22,9 @@ public class NotaFiscal {
 
     private String endereco;
 
-    @OneToMany(cascade = {CascadeType.PERSIST})
+    private String email;
+
+    @OneToMany(cascade = {CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private List<ItemNota> itens = new ArrayList<>();
 
     private BigDecimal valorTotal;
@@ -38,10 +40,11 @@ public class NotaFiscal {
     public NotaFiscal() {
     }
 
-    public NotaFiscal(String nomeComprador, String cpf, String endereco, List<ItemNota> itens, BigDecimal valorTotal) {
+    public NotaFiscal(String nomeComprador, String cpf, String endereco, String email, List<ItemNota> itens, BigDecimal valorTotal) {
         this.nomeComprador = nomeComprador;
         this.cpf = cpf;
         this.endereco = endereco;
+        this.email = email;
         this.itens = itens;
         this.valorTotal = valorTotal;
     }
@@ -66,6 +69,10 @@ public class NotaFiscal {
         return endereco;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public List<ItemNota> getItens() {
         return itens;
     }
@@ -76,5 +83,9 @@ public class NotaFiscal {
 
     public StatusNota getStatus() {
         return status;
+    }
+
+    public void mudarStatus(StatusNota status) {
+        this.status = status;
     }
 }

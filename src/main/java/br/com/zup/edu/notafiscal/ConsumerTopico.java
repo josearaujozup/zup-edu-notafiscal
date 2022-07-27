@@ -1,5 +1,6 @@
 package br.com.zup.edu.notafiscal;
 
+import br.com.zup.edu.notafiscal.email.EmailServiceImpl;
 import br.com.zup.edu.notafiscal.nota.ItemNota;
 import br.com.zup.edu.notafiscal.nota.NotaFiscal;
 import br.com.zup.edu.notafiscal.nota.NotaFiscalRepository;
@@ -45,10 +46,12 @@ public class ConsumerTopico {
                 result.getComprador().getNome(),
                 result.getComprador().getCpf(),
                 result.getComprador().getEndereco(),
+                result.getComprador().getEmail(),
                 itensNota,
                 valorTotal);
 
         notaFiscalRepository.save(notaFiscal);
+
     }
 
 }

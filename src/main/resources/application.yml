@@ -43,6 +43,14 @@ spring:
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
-#  jackson:
-#    serialization:
-#      WRITE_DATES_AS_TIMESTAMPS: false
+  mail:
+    host: smtp.mailtrap.io
+    port: 25
+    username: 6175410933f196
+    password: a04b440ab66af7
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
